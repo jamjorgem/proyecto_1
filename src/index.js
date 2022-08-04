@@ -1,6 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+//AÑADIMOS EL BOOTSTRAP
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
+// !importarte : los estulos propios se deben colocar debajo del bootstrap
 import './index.css';
+
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
