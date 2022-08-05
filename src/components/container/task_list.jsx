@@ -19,7 +19,10 @@ const TaskListComponent = () => {
     //control del ciclo de vida
     useEffect(() => {
         console.log('modificacion de tareas');
-        setLoading(false);
+        setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
         return () => {
             console.log('cuando componente desaparece');
         };
@@ -47,7 +50,6 @@ const TaskListComponent = () => {
     }
 
     function addTask(task) {
-        const index = tasks.indexOf(task); //OBTENER EL INDEX
         const tempTasks = [...tasks]; // OBTENER TODAS LAS TAREAS
 
         tempTasks.push(task);
@@ -56,56 +58,95 @@ const TaskListComponent = () => {
             tempTasks
         )
     }
+
+    const Table = () => {
+        return (
+            <table className='table table-striped'>
+                <thead>
+                    <tr>
+                        <th scope='col'>
+                            Title
+                        </th>
+                        <th scope='col'>
+                            Description
+                        </th>
+                        <th scope='col'>
+                            Priority
+                        </th>
+                        <th scope='col'>
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {tasks.map((tasks, index) => {
+                        return (
+                            <TaskComponent
+                                key={index}
+                                task={tasks}
+                                complete={completeTask}
+                                remove={deletetask}
+
+                            >
+                            </TaskComponent>
+                        );
+                    })}
+
+                </tbody>
+            </table>);
+    }
+
+    let taskTable
+
+    if (tasks.length > 0) {
+        taskTable = <Table></Table>
+    } else {
+        taskTable = (
+            <div>
+                <h3>There are not task to show</h3>
+                <h4>Please, create one.</h4>
+            </div>)
+    }
+
+    const loadingStyle = {
+        color: 'gray',
+        fontSize: '30px',
+        fontWeigth: 'bold'
+    }
+
     return (
         <div>
             <div className='col-12'>
-                <div className='card'>
-                    <div className='card-header p-3'>
-                        <h5>Your Tasks:</h5>
+                <div className='row'>
+                    <div className='col-6'>
+                        <div className='card'>
+                            <div className='card-header p-3'>
+                                <h5>Your Tasks:</h5>
+                            </div>
+                            <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '400px', backgroundColor: 'white' }}>
+                                {loading ? (<p style={loadingStyle}>loading tasks...</p>) : taskTable}
+                            </div>
+                        </div>
+                    </div>
+                    <div className='col-6'>
+                        <div className='card'>
+                            <div className='card-header p-3'>
+                                <h5>Add Task:</h5>
+                            </div>
+                            <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '400px', backgroundColor: 'white' }}>
+                                <Taskform
+                                    add={addTask}
+                                    length={tasks.length}
+                                ></Taskform>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
-                <div className='card-body' data-mdb-perfect-scrollbar='true' style={{ position: 'relative', height: '400px' }}>
-                    <table className='table table-striped'>
-                        <thead>
-                            <tr>
-                                <th scope='col'>
-                                    Title
-                                </th>
-                                <th scope='col'>
-                                    Description
-                                </th>
-                                <th scope='col'>
-                                    Priority
-                                </th>
-                                <th scope='col'>
-                                    Actions
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            {tasks.map((tasks, index) => {
-                                return (
-                                    <TaskComponent
-                                        key={index}
-                                        task={tasks}
-                                        complete={completeTask}
-                                        remove={deletetask}
-
-                                    >
-                                    </TaskComponent>
-                                );
-                            })}
-
-                        </tbody>
-                    </table>
-                </div>
-                <Taskform
-                    add={addTask}
-                ></Taskform>
             </div>
-
-        </div >
+        </div>
     );
 };
 
