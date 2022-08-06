@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       {/* <header className="App-header"> */}
-      {/* <TaskListComponent></TaskListComponent> */}
+      <TaskListComponent></TaskListComponent>
       {/* <GrettingStyled name='jorge'></GrettingStyled> */}
       {/* ejemplo de uso de hooks */}
       {/* <Ejemplo1></Ejemplo1> */}
@@ -36,7 +36,7 @@ function App() {
 
       {/* FORMULARIO FORMIK */}
       {/* <LoginFormik></LoginFormik> */}
-      <RegisterFormik></RegisterFormik>
+      {/* <RegisterFormik></RegisterFormik> */}
     </div>
   );
 }
