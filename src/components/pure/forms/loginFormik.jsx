@@ -1,16 +1,26 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup'
+import { useLocation, useNavigate } from 'react-router-dom';
 
-const loginSchema = Yup.object().shape({
-    email: Yup.string()
-        .email('Invalid Email Format')
-        .required('Email is required'),
-    password: Yup.string()
-        .required('Password is required')
-})
 
 const LoginFormik = () => {
+
+    const loginSchema = Yup.object().shape({
+        email: Yup.string()
+            .email('Invalid Email Format')
+            .required('Email is required'),
+        password: Yup.string()
+            .required('Password is required')
+    });
+
+    const history = useNavigate();
+
+    const navigate = (path) => {
+        history(path);
+    }
+
+
     const initialCredentials = {
         email: '',
         password: ''
@@ -26,6 +36,7 @@ const LoginFormik = () => {
                     await new Promise((r) => setTimeout(r, 1000));
                     alert(JSON.stringify(values, null, 2));
                     localStorage.setItem('credentials', values);
+                    navigate('/profile');
                 }}
             >
                 {/* we obtain props from formik */}
