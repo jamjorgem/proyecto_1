@@ -10,12 +10,13 @@ import Father from './components/container/father';
 import OptionalRender from './components/pure/OptionalRender';
 import LoginFormik from './components/pure/forms/loginFormik';
 import RegisterFormik from './components/pure/forms/registerFormik';
+import Asyncexample from './components/pure/AsyncExample';
 
 function App() {
   return (
     <div className="App">
       {/* <header className="App-header"> */}
-      <TaskListComponent></TaskListComponent>
+      {/* <TaskListComponent></TaskListComponent> */}
       {/* <GrettingStyled name='jorge'></GrettingStyled> */}
       {/* ejemplo de uso de hooks */}
       {/* <Ejemplo1></Ejemplo1> */}
@@ -37,6 +38,9 @@ function App() {
       {/* FORMULARIO FORMIK */}
       {/* <LoginFormik></LoginFormik> */}
       {/* <RegisterFormik></RegisterFormik> */}
+
+      {/* EJEMPLO DE ASINCRONOS */}
+      <Asyncexample></Asyncexample>
     </div>
   );
 }

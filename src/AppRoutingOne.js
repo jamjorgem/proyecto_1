@@ -20,6 +20,19 @@ function AppRoutingOne() {
     console.log('user logged?', logged);
   }, []);
 
+  let taskList = [
+    {
+      id: 1,
+      name: 'task 1',
+      description: 'description task 1'
+    },
+    {
+      id: 2,
+      name: 'task 2',
+      description: 'description task 2'
+    }
+  ]
+
   return (
     <div className="App">
       <Router>
@@ -28,6 +41,8 @@ function AppRoutingOne() {
             <Link to='/'>| Home |</Link>
             <Link to='/about'>| About |</Link>
             <Link to='/about'>| Faqs |</Link>
+            <Link to='/task/1'>| Task 1 |</Link>
+            <Link to='/task/2'>| Task 2 |</Link>
             <Link to='/login'>| Login |</Link>
 
             <Link to='/una404'>| Not Exists |</Link>
@@ -55,7 +70,7 @@ function AppRoutingOne() {
                 )
               } />
               <Route path='/tasks' element={<TasksPage />} />
-              <Route path='/task/:taskId' element={<TaskDetailPage />} />
+              <Route path='/task/:taskId' element={<TaskDetailPage task={taskList[0]} />} />
               <Route path='*' element={<NotfoundPage />} />
             </Routes>
           </main>
