@@ -5,6 +5,9 @@ import LoginPage from './pages/auth/LoginPage';
 import DashboardPage from './pages/dashboard/dashboardPage';
 import Asyncexample from './components/pure/AsyncExample';
 import ObservableExample from './components/pure/ObservableExample';
+import FetchExample from './components/pure/FetchExample';
+import AxiosExample from './components/pure/AxiosExample';
+import ChuckNorrisExample from './components/pure/forms/ChuckNorrisExample';
 
 
 
@@ -25,6 +28,9 @@ function AppRoutingFinal() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/ejemplo1' element={<Asyncexample />} />
           <Route path='/ejemplo2' element={<ObservableExample />} />
+          <Route path='/ejemplo3' element={<FetchExample />} />
+          <Route path='/ejemplo4' element={<AxiosExample />} />
+          <Route path='/ChuckNorrisExample' element={<ChuckNorrisExample />} />
           <Route path='/dashboard' element={
             loggedIn ? (
 

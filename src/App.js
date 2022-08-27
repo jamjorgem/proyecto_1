@@ -11,6 +11,7 @@ import OptionalRender from './components/pure/OptionalRender';
 import LoginFormik from './components/pure/forms/loginFormik';
 import RegisterFormik from './components/pure/forms/registerFormik';
 import Asyncexample from './components/pure/AsyncExample';
+import AxiosCRUDExample from './components/pure/AxiosCRUDExample';
 
 function App() {
   return (
@@ -40,7 +41,9 @@ function App() {
       {/* <RegisterFormik></RegisterFormik> */}
 
       {/* EJEMPLO DE ASINCRONOS */}
-      <Asyncexample></Asyncexample>
+      {/* <Asyncexample></Asyncexample> */}
+
+      <AxiosCRUDExample></AxiosCRUDExample>
     </div>
   );
 }
